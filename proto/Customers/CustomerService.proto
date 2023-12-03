@@ -10,7 +10,7 @@ service Customer {
 }
 
 message GetDetailsRequest {
-  int32 id = 1;
+  string id = 1;
 }
 
 message GetDetailsResponse {
@@ -30,11 +30,11 @@ message CreateRequest {
 }
 
 message CreateResponse {
-  int32 id = 1;
+  string id = 1;
 }
 
 message BlockRequest {
-  int32 blockId = 1;
+  string blockId = 1;
 }
 
 message BlockResponse {
