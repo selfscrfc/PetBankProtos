@@ -14,15 +14,15 @@ message GetDetailsRequest {
 }
 
 message GetDetailsResponse {
-  string fullName = 1;
-  string login = 2;
-  int32 yearCreated = 3;
-  int32 datetimeCreated = 4;
+  string id = 1;
+  string fullName = 2;
+  int64 time = 3;
+  string login = 4;
   bool isBlocked = 5;
 }
 
 message CreateRequest {
-  string Id = 1;
+  string id = 1;
   string fullName = 2;
   int64 time = 3;
   string login = 4;
