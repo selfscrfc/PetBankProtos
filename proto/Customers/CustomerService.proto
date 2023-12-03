@@ -6,6 +6,7 @@ service Customer {
   rpc GetDetails(GetDetailsRequest) returns (GetDetailsResponse);
   rpc Create(CreateRequest) returns (CreateResponse);
   rpc Block(BlockRequest) returns (BlockResponse);
+  rpc SignIn(SignInRequest) returns (SignInResponse);
 }
 
 message GetDetailsRequest {
@@ -14,21 +15,22 @@ message GetDetailsRequest {
 
 message GetDetailsResponse {
   string fullName = 1;
-  int32 yearCreated = 2;
-  int32 datetimeCreated = 3;
-  bool isBlocked = 4;
+  string login = 2;
+  int32 yearCreated = 3;
+  int32 datetimeCreated = 4;
+  bool isBlocked = 5;
 }
 
 message CreateRequest {
-  string fullName = 1;
-  string login = 2;
-  string password = 3;
+  string Id = 1;
+  string fullName = 2;
+  int64 time = 3;
+  string login = 4;
+  string password = 5;
 }
 
 message CreateResponse {
   int32 id = 1;
-  bool success = 2;
-  string error = 3;
 }
 
 message BlockRequest {
@@ -37,7 +39,15 @@ message BlockRequest {
 
 message BlockResponse {
   bool success = 1;
-  string error = 2;
+}
+
+message SignInRequest {
+  string login = 1;
+  string password = 2;
+}
+
+message SignInResponse {
+  bool success = 1;
 }
 
 

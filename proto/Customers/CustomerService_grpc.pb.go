@@ -25,6 +25,7 @@ type CustomerClient interface {
 	GetDetails(ctx context.Context, in *GetDetailsRequest, opts ...grpc.CallOption) (*GetDetailsResponse, error)
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	Block(ctx context.Context, in *BlockRequest, opts ...grpc.CallOption) (*BlockResponse, error)
+	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
 }
 
 type customerClient struct {
@@ -62,6 +63,15 @@ func (c *customerClient) Block(ctx context.Context, in *BlockRequest, opts ...gr
 	return out, nil
 }
 
+func (c *customerClient) SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error) {
+	out := new(SignInResponse)
+	err := c.cc.Invoke(ctx, "/PetBank.proto.customers.Customer/SignIn", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CustomerServer is the server API for Customer service.
 // All implementations must embed UnimplementedCustomerServer
 // for forward compatibility
@@ -69,6 +79,7 @@ type CustomerServer interface {
 	GetDetails(context.Context, *GetDetailsRequest) (*GetDetailsResponse, error)
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	Block(context.Context, *BlockRequest) (*BlockResponse, error)
+	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
 	mustEmbedUnimplementedCustomerServer()
 }
 
@@ -84,6 +95,9 @@ func (UnimplementedCustomerServer) Create(context.Context, *CreateRequest) (*Cre
 }
 func (UnimplementedCustomerServer) Block(context.Context, *BlockRequest) (*BlockResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Block not implemented")
+}
+func (UnimplementedCustomerServer) SignIn(context.Context, *SignInRequest) (*SignInResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SignIn not implemented")
 }
 func (UnimplementedCustomerServer) mustEmbedUnimplementedCustomerServer() {}
 
@@ -152,6 +166,24 @@ func _Customer_Block_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Customer_SignIn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SignInRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CustomerServer).SignIn(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/PetBank.proto.customers.Customer/SignIn",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CustomerServer).SignIn(ctx, req.(*SignInRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Customer_ServiceDesc is the grpc.ServiceDesc for Customer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -170,6 +202,10 @@ var Customer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Block",
 			Handler:    _Customer_Block_Handler,
+		},
+		{
+			MethodName: "SignIn",
+			Handler:    _Customer_SignIn_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
