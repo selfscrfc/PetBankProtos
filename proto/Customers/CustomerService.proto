@@ -22,15 +22,17 @@ message GetDetailsResponse {
 }
 
 message CreateRequest {
+  string fullName = 1;
+  string login = 2;
+  string password = 3;
+}
+
+message CreateResponse {
   string id = 1;
   string fullName = 2;
   int64 time = 3;
   string login = 4;
   string password = 5;
-}
-
-message CreateResponse {
-  string id = 1;
 }
 
 message BlockRequest {
