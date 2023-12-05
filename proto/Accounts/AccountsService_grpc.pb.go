@@ -23,10 +23,10 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AccountServiceClient interface {
 	GetDetail(ctx context.Context, in *GetDetailsRequest, opts ...grpc.CallOption) (*GetDetailsResponse, error)
-	GetTransactionsHistory(ctx context.Context, in *GetTransactionsHistoryRequest, opts ...grpc.CallOption) (*GetTransactionsHistoryResponse, error)
 	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 	Block(ctx context.Context, in *BlockRequest, opts ...grpc.CallOption) (*BlockResponse, error)
 	GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
+	RW(ctx context.Context, in *RWRequest, opts ...grpc.CallOption) (*RWResponse, error)
 }
 
 type accountServiceClient struct {
@@ -40,15 +40,6 @@ func NewAccountServiceClient(cc grpc.ClientConnInterface) AccountServiceClient {
 func (c *accountServiceClient) GetDetail(ctx context.Context, in *GetDetailsRequest, opts ...grpc.CallOption) (*GetDetailsResponse, error) {
 	out := new(GetDetailsResponse)
 	err := c.cc.Invoke(ctx, "/PetBank.proto.account.AccountService/GetDetail", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accountServiceClient) GetTransactionsHistory(ctx context.Context, in *GetTransactionsHistoryRequest, opts ...grpc.CallOption) (*GetTransactionsHistoryResponse, error) {
-	out := new(GetTransactionsHistoryResponse)
-	err := c.cc.Invoke(ctx, "/PetBank.proto.account.AccountService/GetTransactionsHistory", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -82,15 +73,24 @@ func (c *accountServiceClient) GetAll(ctx context.Context, in *GetAllRequest, op
 	return out, nil
 }
 
+func (c *accountServiceClient) RW(ctx context.Context, in *RWRequest, opts ...grpc.CallOption) (*RWResponse, error) {
+	out := new(RWResponse)
+	err := c.cc.Invoke(ctx, "/PetBank.proto.account.AccountService/RW", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AccountServiceServer is the server API for AccountService service.
 // All implementations must embed UnimplementedAccountServiceServer
 // for forward compatibility
 type AccountServiceServer interface {
 	GetDetail(context.Context, *GetDetailsRequest) (*GetDetailsResponse, error)
-	GetTransactionsHistory(context.Context, *GetTransactionsHistoryRequest) (*GetTransactionsHistoryResponse, error)
 	Create(context.Context, *CreateRequest) (*CreateResponse, error)
 	Block(context.Context, *BlockRequest) (*BlockResponse, error)
 	GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error)
+	RW(context.Context, *RWRequest) (*RWResponse, error)
 	mustEmbedUnimplementedAccountServiceServer()
 }
 
@@ -101,9 +101,6 @@ type UnimplementedAccountServiceServer struct {
 func (UnimplementedAccountServiceServer) GetDetail(context.Context, *GetDetailsRequest) (*GetDetailsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDetail not implemented")
 }
-func (UnimplementedAccountServiceServer) GetTransactionsHistory(context.Context, *GetTransactionsHistoryRequest) (*GetTransactionsHistoryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionsHistory not implemented")
-}
 func (UnimplementedAccountServiceServer) Create(context.Context, *CreateRequest) (*CreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
@@ -112,6 +109,9 @@ func (UnimplementedAccountServiceServer) Block(context.Context, *BlockRequest) (
 }
 func (UnimplementedAccountServiceServer) GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedAccountServiceServer) RW(context.Context, *RWRequest) (*RWResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RW not implemented")
 }
 func (UnimplementedAccountServiceServer) mustEmbedUnimplementedAccountServiceServer() {}
 
@@ -140,24 +140,6 @@ func _AccountService_GetDetail_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).GetDetail(ctx, req.(*GetDetailsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccountService_GetTransactionsHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionsHistoryRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).GetTransactionsHistory(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/PetBank.proto.account.AccountService/GetTransactionsHistory",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).GetTransactionsHistory(ctx, req.(*GetTransactionsHistoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -216,6 +198,24 @@ func _AccountService_GetAll_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccountService_RW_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RWRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).RW(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/PetBank.proto.account.AccountService/RW",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).RW(ctx, req.(*RWRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AccountService_ServiceDesc is the grpc.ServiceDesc for AccountService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,10 +228,6 @@ var AccountService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccountService_GetDetail_Handler,
 		},
 		{
-			MethodName: "GetTransactionsHistory",
-			Handler:    _AccountService_GetTransactionsHistory_Handler,
-		},
-		{
 			MethodName: "Create",
 			Handler:    _AccountService_Create_Handler,
 		},
@@ -242,6 +238,10 @@ var AccountService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAll",
 			Handler:    _AccountService_GetAll_Handler,
+		},
+		{
+			MethodName: "RW",
+			Handler:    _AccountService_RW_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

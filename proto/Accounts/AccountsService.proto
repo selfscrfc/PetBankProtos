@@ -14,7 +14,7 @@ service AccountService {
   rpc Create(CreateRequest) returns (CreateResponse);
   rpc Block(BlockRequest) returns (BlockResponse);
   rpc GetAll(GetAllRequest) returns (GetAllResponse);
-  rpc RW(RWRequest) returns (RWResponse)
+  rpc RW(RWRequest) returns (RWResponse);
 }
 
 message RWRequest {
