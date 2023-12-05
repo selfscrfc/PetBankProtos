@@ -61,7 +61,10 @@ message CreateRequest {
 
 message CreateResponse {
   string id = 1;
-  bool success = 2;
+  string userId = 2;
+  bool isCredit = 3;
+  int32 balance = 4;
+  Currency currency = 5;
 }
 
 message DeleteRequest {
