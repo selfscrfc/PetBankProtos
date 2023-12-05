@@ -24,10 +24,7 @@ message RWRequest {
 }
 
 message RWResponse {
-  int32 amoun = 1;
-}
-
-message Account {
+  int32  amount
   string id = 1;
   string userId = 2;
   bool isCredit = 3;
