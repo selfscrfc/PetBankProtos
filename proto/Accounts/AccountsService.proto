@@ -24,13 +24,13 @@ message RWRequest {
 }
 
 message RWResponse {
-  int32  amount
-  string id = 1;
-  string userId = 2;
-  bool isCredit = 3;
-  int32 balance = 4;
-  Currency currency = 5;
-  bool isBlocked = 6;
+  int32  amount = 1;
+  string id = 2;
+  string userId = 3;
+  bool isCredit = 4;
+  int32 balance = 5;
+  Currency currency = 6;
+  bool isBlocked = 7;
 }
 
 message Transaction {
