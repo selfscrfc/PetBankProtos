@@ -15,6 +15,7 @@ service AccountService {
   rpc Create(CreateRequest) returns (CreateResponse);
   rpc Delete(DeleteRequest) returns (DeleteResponse);
   rpc Block(BlockRequest) returns (BlockResponse);
+  rpc GetAll(GetAllRequest) returns (GetAllResponse);
 }
 
 message Account {
@@ -94,11 +95,11 @@ message BlockResponse {
   bool success = 1;
 }
 
-message GetAllrequest {
+message GetAllRequest {
 
 }
 
-message GetAllresponse {
+message GetAllResponse {
   repeated Account accounts = 1;
 }
 
