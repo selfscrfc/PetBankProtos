@@ -11,10 +11,20 @@ enum Currency {
 
 service AccountService {
   rpc GetDetail(GetDetailsRequest) returns (GetDetailsResponse);
-  rpc GetTransactionsHistory(GetTransactionsHistoryRequest) returns (GetTransactionsHistoryResponse);
   rpc Create(CreateRequest) returns (CreateResponse);
   rpc Block(BlockRequest) returns (BlockResponse);
   rpc GetAll(GetAllRequest) returns (GetAllResponse);
+  rpc RW(RWRequest) returns (RWResponse)
+}
+
+message RWRequest {
+  string aId = 1;
+  string uId = 2;
+  int64 amount = 3;
+}
+
+message RWResponse {
+
 }
 
 message Account {
