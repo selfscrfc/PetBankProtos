@@ -108,4 +108,11 @@ message GetAllResponse {
   repeated Account accounts = 1;
 }
 
-
+message Account {
+       string id  = 1;
+   string  userId =2 ;
+   bool   isCredit  = 3;
+     int32   balance =4;
+   Currency currency =5;
+   bool isBlocked=6;
+}
