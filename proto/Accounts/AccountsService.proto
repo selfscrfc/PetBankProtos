@@ -17,6 +17,15 @@ service AccountService {
   rpc Block(BlockRequest) returns (BlockResponse);
 }
 
+message Account {
+  string id = 1;
+  string userId = 2;
+  bool isCredit = 3;
+  int32 balance = 4;
+  Currency currency = 5;
+  bool isBlocked = 6;
+}
+
 message Transaction {
   string id = 1;
   string accountId = 2;
@@ -29,7 +38,7 @@ message Transaction {
 
 message GetDetailsRequest {
   string id = 1;
-  string usedId = 2;
+  string userdId = 2;
 }
 
 message GetDetailsResponse {
@@ -38,6 +47,7 @@ message GetDetailsResponse {
   bool isCredit = 3;
   int32 balance = 4;
   Currency currency = 5;
+  bool isBlocked = 6;
 }
 
 message GetTransactionsHistoryRequest {
@@ -82,6 +92,14 @@ message BlockRequest {
 
 message BlockResponse {
   bool success = 1;
+}
+
+message GetAllrequest {
+
+}
+
+message GetAllresponse {
+  repeated Account accounts = 1;
 }
 
 
