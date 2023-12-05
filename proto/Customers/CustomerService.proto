@@ -49,7 +49,11 @@ message SignInRequest {
 }
 
 message SignInResponse {
-  bool success = 1;
+  string id = 1;
+  string fullName = 2;
+  int64 time = 3;
+  string login = 4;
+  bool isBlocked = 5;
 }
 
 
