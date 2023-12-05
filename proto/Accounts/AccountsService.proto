@@ -24,7 +24,7 @@ message RWRequest {
 }
 
 message RWResponse {
-
+  int32 amoun = 1;
 }
 
 message Account {
