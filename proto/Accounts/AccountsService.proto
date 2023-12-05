@@ -38,7 +38,7 @@ message Transaction {
 
 message GetDetailsRequest {
   string id = 1;
-  string userdId = 2;
+  string userId = 2;
 }
 
 message GetDetailsResponse {
