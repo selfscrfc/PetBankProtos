@@ -865,14 +865,14 @@ func (x *BlockResponse) GetSuccess() bool {
 	return false
 }
 
-type GetAllrequest struct {
+type GetAllRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *GetAllrequest) Reset() {
-	*x = GetAllrequest{}
+func (x *GetAllRequest) Reset() {
+	*x = GetAllRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_Accounts_AccountsService_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -880,13 +880,13 @@ func (x *GetAllrequest) Reset() {
 	}
 }
 
-func (x *GetAllrequest) String() string {
+func (x *GetAllRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetAllrequest) ProtoMessage() {}
+func (*GetAllRequest) ProtoMessage() {}
 
-func (x *GetAllrequest) ProtoReflect() protoreflect.Message {
+func (x *GetAllRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_Accounts_AccountsService_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -898,12 +898,12 @@ func (x *GetAllrequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetAllrequest.ProtoReflect.Descriptor instead.
-func (*GetAllrequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetAllRequest.ProtoReflect.Descriptor instead.
+func (*GetAllRequest) Descriptor() ([]byte, []int) {
 	return file_Accounts_AccountsService_proto_rawDescGZIP(), []int{12}
 }
 
-type GetAllresponse struct {
+type GetAllResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -911,8 +911,8 @@ type GetAllresponse struct {
 	Accounts []*Account `protobuf:"bytes,1,rep,name=accounts,proto3" json:"accounts,omitempty"`
 }
 
-func (x *GetAllresponse) Reset() {
-	*x = GetAllresponse{}
+func (x *GetAllResponse) Reset() {
+	*x = GetAllResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_Accounts_AccountsService_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -920,13 +920,13 @@ func (x *GetAllresponse) Reset() {
 	}
 }
 
-func (x *GetAllresponse) String() string {
+func (x *GetAllResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetAllresponse) ProtoMessage() {}
+func (*GetAllResponse) ProtoMessage() {}
 
-func (x *GetAllresponse) ProtoReflect() protoreflect.Message {
+func (x *GetAllResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_Accounts_AccountsService_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -938,12 +938,12 @@ func (x *GetAllresponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetAllresponse.ProtoReflect.Descriptor instead.
-func (*GetAllresponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetAllResponse.ProtoReflect.Descriptor instead.
+func (*GetAllResponse) Descriptor() ([]byte, []int) {
 	return file_Accounts_AccountsService_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *GetAllresponse) GetAccounts() []*Account {
+func (x *GetAllResponse) GetAccounts() []*Account {
 	if x != nil {
 		return x.Accounts
 	}
@@ -1045,15 +1045,15 @@ var file_Accounts_AccountsService_proto_rawDesc = []byte{
 	0x22, 0x29, 0x0a, 0x0d, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
 	0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x22, 0x0f, 0x0a, 0x0d, 0x47,
-	0x65, 0x74, 0x41, 0x6c, 0x6c, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x4c, 0x0a, 0x0e,
-	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x72, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a,
+	0x65, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x4c, 0x0a, 0x0e,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a,
 	0x0a, 0x08, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
 	0x32, 0x1e, 0x2e, 0x50, 0x65, 0x74, 0x42, 0x61, 0x6e, 0x6b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74,
 	0x52, 0x08, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x73, 0x2a, 0x2d, 0x0a, 0x08, 0x43, 0x75,
 	0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x12, 0x0a, 0x0a, 0x06, 0x52, 0x55, 0x42, 0x4c, 0x45, 0x53,
 	0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x44, 0x4f, 0x4c, 0x4c, 0x41, 0x52, 0x53, 0x10, 0x01, 0x12,
-	0x08, 0x0a, 0x04, 0x45, 0x55, 0x52, 0x4f, 0x10, 0x02, 0x32, 0xfc, 0x03, 0x0a, 0x0e, 0x41, 0x63,
+	0x08, 0x0a, 0x04, 0x45, 0x55, 0x52, 0x4f, 0x10, 0x02, 0x32, 0xd3, 0x04, 0x0a, 0x0e, 0x41, 0x63,
 	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x60, 0x0a, 0x09,
 	0x47, 0x65, 0x74, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x12, 0x28, 0x2e, 0x50, 0x65, 0x74, 0x42,
 	0x61, 0x6e, 0x6b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e,
@@ -1085,8 +1085,14 @@ var file_Accounts_AccountsService_proto_rawDesc = []byte{
 	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65,
 	0x73, 0x74, 0x1a, 0x24, 0x2e, 0x50, 0x65, 0x74, 0x42, 0x61, 0x6e, 0x6b, 0x2e, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x42, 0x6c, 0x6f, 0x63, 0x6b,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x0a, 0x5a, 0x08, 0x2f, 0x61, 0x63, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x55, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x41,
+	0x6c, 0x6c, 0x12, 0x24, 0x2e, 0x50, 0x65, 0x74, 0x42, 0x61, 0x6e, 0x6b, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c,
+	0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25, 0x2e, 0x50, 0x65, 0x74, 0x42, 0x61,
+	0x6e, 0x6b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74,
+	0x2e, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42,
+	0x0a, 0x5a, 0x08, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1117,8 +1123,8 @@ var file_Accounts_AccountsService_proto_goTypes = []interface{}{
 	(*DeleteResponse)(nil),                 // 10: PetBank.proto.account.DeleteResponse
 	(*BlockRequest)(nil),                   // 11: PetBank.proto.account.BlockRequest
 	(*BlockResponse)(nil),                  // 12: PetBank.proto.account.BlockResponse
-	(*GetAllrequest)(nil),                  // 13: PetBank.proto.account.GetAllrequest
-	(*GetAllresponse)(nil),                 // 14: PetBank.proto.account.GetAllresponse
+	(*GetAllRequest)(nil),                  // 13: PetBank.proto.account.GetAllRequest
+	(*GetAllResponse)(nil),                 // 14: PetBank.proto.account.GetAllResponse
 }
 var file_Accounts_AccountsService_proto_depIdxs = []int32{
 	0,  // 0: PetBank.proto.account.Account.currency:type_name -> PetBank.proto.account.Currency
@@ -1127,19 +1133,21 @@ var file_Accounts_AccountsService_proto_depIdxs = []int32{
 	2,  // 3: PetBank.proto.account.GetTransactionsHistoryResponse.transactions:type_name -> PetBank.proto.account.Transaction
 	0,  // 4: PetBank.proto.account.CreateRequest.currency:type_name -> PetBank.proto.account.Currency
 	0,  // 5: PetBank.proto.account.CreateResponse.currency:type_name -> PetBank.proto.account.Currency
-	1,  // 6: PetBank.proto.account.GetAllresponse.accounts:type_name -> PetBank.proto.account.Account
+	1,  // 6: PetBank.proto.account.GetAllResponse.accounts:type_name -> PetBank.proto.account.Account
 	3,  // 7: PetBank.proto.account.AccountService.GetDetail:input_type -> PetBank.proto.account.GetDetailsRequest
 	5,  // 8: PetBank.proto.account.AccountService.GetTransactionsHistory:input_type -> PetBank.proto.account.GetTransactionsHistoryRequest
 	7,  // 9: PetBank.proto.account.AccountService.Create:input_type -> PetBank.proto.account.CreateRequest
 	9,  // 10: PetBank.proto.account.AccountService.Delete:input_type -> PetBank.proto.account.DeleteRequest
 	11, // 11: PetBank.proto.account.AccountService.Block:input_type -> PetBank.proto.account.BlockRequest
-	4,  // 12: PetBank.proto.account.AccountService.GetDetail:output_type -> PetBank.proto.account.GetDetailsResponse
-	6,  // 13: PetBank.proto.account.AccountService.GetTransactionsHistory:output_type -> PetBank.proto.account.GetTransactionsHistoryResponse
-	8,  // 14: PetBank.proto.account.AccountService.Create:output_type -> PetBank.proto.account.CreateResponse
-	10, // 15: PetBank.proto.account.AccountService.Delete:output_type -> PetBank.proto.account.DeleteResponse
-	12, // 16: PetBank.proto.account.AccountService.Block:output_type -> PetBank.proto.account.BlockResponse
-	12, // [12:17] is the sub-list for method output_type
-	7,  // [7:12] is the sub-list for method input_type
+	13, // 12: PetBank.proto.account.AccountService.GetAll:input_type -> PetBank.proto.account.GetAllRequest
+	4,  // 13: PetBank.proto.account.AccountService.GetDetail:output_type -> PetBank.proto.account.GetDetailsResponse
+	6,  // 14: PetBank.proto.account.AccountService.GetTransactionsHistory:output_type -> PetBank.proto.account.GetTransactionsHistoryResponse
+	8,  // 15: PetBank.proto.account.AccountService.Create:output_type -> PetBank.proto.account.CreateResponse
+	10, // 16: PetBank.proto.account.AccountService.Delete:output_type -> PetBank.proto.account.DeleteResponse
+	12, // 17: PetBank.proto.account.AccountService.Block:output_type -> PetBank.proto.account.BlockResponse
+	14, // 18: PetBank.proto.account.AccountService.GetAll:output_type -> PetBank.proto.account.GetAllResponse
+	13, // [13:19] is the sub-list for method output_type
+	7,  // [7:13] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name
 	7,  // [7:7] is the sub-list for extension extendee
 	0,  // [0:7] is the sub-list for field type_name
@@ -1296,7 +1304,7 @@ func file_Accounts_AccountsService_proto_init() {
 			}
 		}
 		file_Accounts_AccountsService_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetAllrequest); i {
+			switch v := v.(*GetAllRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1308,7 +1316,7 @@ func file_Accounts_AccountsService_proto_init() {
 			}
 		}
 		file_Accounts_AccountsService_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetAllresponse); i {
+			switch v := v.(*GetAllResponse); i {
 			case 0:
 				return &v.state
 			case 1:
