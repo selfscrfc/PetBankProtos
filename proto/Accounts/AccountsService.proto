@@ -13,7 +13,6 @@ service AccountService {
   rpc GetDetail(GetDetailsRequest) returns (GetDetailsResponse);
   rpc GetTransactionsHistory(GetTransactionsHistoryRequest) returns (GetTransactionsHistoryResponse);
   rpc Create(CreateRequest) returns (CreateResponse);
-  rpc Delete(DeleteRequest) returns (DeleteResponse);
   rpc Block(BlockRequest) returns (BlockResponse);
   rpc GetAll(GetAllRequest) returns (GetAllResponse);
 }
@@ -63,11 +62,10 @@ message GetTransactionsHistoryResponse {
 }
 
 message CreateRequest {
-  string id = 1;
-  string userId = 2;
-  bool isCredit = 3;
-  int32 balance = 4;
-  Currency currency = 5;
+  string userId = 1;
+  bool isCredit = 2;
+  int32 balance = 3;
+  Currency currency =4;
 }
 
 message CreateResponse {
